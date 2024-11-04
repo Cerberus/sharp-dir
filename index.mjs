@@ -26,7 +26,7 @@ await files
 		execSync(`mkdir -p "${parentDir}/${outputName}"`)
 		outputDirIdx[`${parentDir}/${outputName}`] = true
 
-		console.log('exec', filePath)
+		console.info('exec', filePath)
 		return sharp(`./${filePath}`)
 			.toFormat('jpg', { lossless: true, mozjpeg: true })
 			.toFile(`${file.parentPath ?? '.'}/${outputName}/${file.name}`)
@@ -40,7 +40,7 @@ await files
 	}, Promise.resolve())
 	.finally(() => {
 		Object.keys(outputDirIdx).forEach((outputDir) => {
-			console.log('rm', outputDir)
+			console.info('rm', outputDir)
 			execSync(`rm -rf "${outputDir}"`)
 		})
 	})
