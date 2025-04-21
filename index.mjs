@@ -36,6 +36,7 @@ await files
 						file.name
 					}" "${filePath}"`,
 				)
+				execSync(`mv "${filePath}" "${filePath.replace('.png', '.jpg')}"`)
 			})
 	}, Promise.resolve())
 	.finally(() => {
