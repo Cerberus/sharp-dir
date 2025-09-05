@@ -10,7 +10,9 @@ const directs = await readdir(scanDir, {
 const files = directs.filter(
 	(direct) =>
 		direct.isFile() &&
-		['png', 'jpg', 'jpeg'].some((ext) => direct.name.endsWith(ext)),
+		['png', 'jpg', 'jpeg'].some((ext) =>
+			direct.name.toLowerCase().endsWith(ext),
+		),
 )
 
 sharp.cache(false)
